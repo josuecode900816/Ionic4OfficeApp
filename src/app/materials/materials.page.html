@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Materiales</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item-sliding *ngFor="let material of loadedMaterials" #slidingItem >
+            <ion-item [routerLink]="['/', 'materials', 'detail', material.id]"
+              detail>
+              <ion-thumbnail slot="start">
+                <ion-img [src]="material.image"></ion-img>
+              </ion-thumbnail>
+              <ion-label>
+                <h4>{{material.name}}</h4>
+                <p>{{material.quantity}}</p>
+              </ion-label>
+            </ion-item>
+            
+            <ion-item-options >
+              <ion-item-option (click)="onEditOffer(material.id, slidingItem )">
+                <ion-icon slot="icon-only" name="create"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+             
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
